@@ -1,14 +1,19 @@
 {
   "name": "country-view",
-  "version": "0.0.0",
+  "version": "2.0.2",
+  "private": false,
+  "publishConfig": {
+    "registry": "http://192.168.0.32:8081/repository/country-viewer-npm-proj/"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "version-stamp": "npm version 1.0.0-$(Get-Date -Format 'yyyyMMdd-HHmm') --no-git-tag-version",
+    "deploy": "npm run version-stamp && npm run build && cp package.json dist/country-view/ && cd dist/country-view && npm publish"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^15.1.0",
     "@angular/cdk": "^15.2.6",
