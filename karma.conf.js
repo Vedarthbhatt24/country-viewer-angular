@@ -33,7 +33,20 @@ module.exports = function (config) {
       ]
     },
     reporters: ['progress', 'kjhtml'],
-    browsers: ['Chrome'],
-    restartOnFileChange: true
+     customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      }
+    },
+    // -----------------------
+
+    // CHANGE THIS: Use the headless browser for CI speed
+    browsers: ['ChromeHeadlessCI'],
+
+    // CHANGE THIS: Ensure it finishes and exits
+    singleRun: true, 
+    
+    restartOnFileChange: false
   });
 };
